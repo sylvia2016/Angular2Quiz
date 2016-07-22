@@ -1,0 +1,50 @@
+<br />
+<br />
+<br />
+<div style="padding-left:10px">
+    <table>
+        <tr>
+            <td><h4>Choose food&nbsp;</h4></td>
+            <td>
+                <select id="Select1" style="width: 200px; height:30px" [(ngModel)]="foodId" (ngModelChange)="doChange()">
+                    <option value="-99999999999999999999999999999999999999">all food</option>
+                    <option *ngFor="let food of aryFood" value="{{food.Id}}">{{food.Name}}</option>
+                    <!--<option *ngFor="let food of aryFood" [value]="food.Id" [text]="food.Name"></option> //屬性繫結-->
+                </select>
+                <!--<input id="Text1" type="text" value="{{foodId}}" />-->
+            </td>
+        </tr>
+        <tr>
+            <td><h4>Add new food&nbsp;</h4></td>
+            <td><input id="Text1" type="text" placeholder="input new food name" [(ngModel)]=inputName /></td>
+            <td><input id="Text2" type="text" placeholder="input new food price" [(ngModel)]=inputPrice /></td>
+            <td><input id="Submit1" type="submit" value="Add" (click)="postData()" /></td>
+        </tr>
+    </table>
+    <br />
+    <table style="width:50%" border="1">
+        <tr>
+            <td class="table_header">Id</td>
+            <td class="table_body">Name</td>
+            <td class="table_other">Price</td>
+            <td class="table_other">Update</td>
+            <td class="table_other">Delete</td>
+        </tr>
+        <tr *ngFor="let food of aryFoodById"><!-- ngFor和ngIf不可同時使用(參考網址：http://stackoverflow.com/questions/37026219/angular2-ngfor-and-ngif-on-same-element-producing-error) -->
+            <template [ngIf]="food.Id <= 6">
+                <td class="table_header">{{food.Id}}</td>
+                <td class="table_body">{{food.Name}}</td>
+                <td class="table_other">{{food.Price}}</td>
+                <td class="table_other"></td>
+                <td class="table_other"></td>
+            </template>
+            <template [ngIf]="food.Id > 6">
+                <td class="table_header"><input id="Text1" type="hidden" value="{{food.Id}}" #updateId />{{food.Id}}</td>
+                <td class="table_body"><input id="Text1" type="text" value="{{food.Name}}" #updateName /></td>
+                <td class="table_other"><input id="Text2" type="text" value="{{food.Price}}" #updatePrice /></td>
+                <td class="table_other"><input id="Submit2" type="submit" value="Update" (click)="updateFood(updateId.value, updateName.value, updatePrice.value)" /></td>
+                <td class="table_other"><input id="Submit3" type="submit" value="Delete" (click)="deleteFood(updateId.value, updateName.value)"/></td>
+            </template>
+        </tr>
+    </table>
+</div>

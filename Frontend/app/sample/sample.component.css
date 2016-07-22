@@ -1,0 +1,16 @@
+.table_header{
+    width:50px;
+    padding: 5px 5px 5px 5px;
+}
+
+.table_name{
+    width:50%;
+    padding: 5px 5px 5px 5px;
+}
+
+.table_other{
+    width:150px;
+    padding: 5px 5px 5px 5px;
+}
+
+
