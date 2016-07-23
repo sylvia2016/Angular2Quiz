@@ -14,7 +14,7 @@ namespace Backend.Controllers
 {
     public class FoodPricesController : ApiController
     {
-        private MyFoodEntities db = new MyFoodEntities();
+        private MyFoodEntities1 db = new MyFoodEntities1();
 
         // GET: api/FoodPrices
         public IQueryable<FoodPrice> GetFoodPrice()

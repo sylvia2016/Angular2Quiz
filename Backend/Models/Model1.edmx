@@ -29,7 +29,7 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Int32" />
         </EntityType>
-        <EntityContainer Name="MyFoodEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="MyFoodEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="FoodPrice" EntityType="Self.FoodPrice" />
         </EntityContainer>
       </Schema>
@@ -37,7 +37,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="MyFoodModelStoreContainer" CdmEntityContainer="MyFoodEntities">
+        <EntityContainerMapping StorageEntityContainer="MyFoodModelStoreContainer" CdmEntityContainer="MyFoodEntities1">
           <EntitySetMapping Name="FoodPrice">
             <EntityTypeMapping TypeName="MyFoodModel.FoodPrice">
               <MappingFragment StoreEntitySet="FoodPrice">

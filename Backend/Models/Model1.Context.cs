@@ -13,10 +13,10 @@ namespace Backend.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MyFoodEntities : DbContext
+    public partial class MyFoodEntities1 : DbContext
     {
-        public MyFoodEntities()
-            : base("name=MyFoodEntities")
+        public MyFoodEntities1()
+            : base("name=MyFoodEntities1")
         {
         }
     
