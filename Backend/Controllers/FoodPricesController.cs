@@ -9,9 +9,14 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Backend.Models;
+using System.Web.Http.Cors;
 
 namespace Backend.Controllers
 {
+    [EnableCors(
+            origins: "http://localhost:10244",
+            headers: "*",
+            methods: "*")]
     public class FoodPricesController : ApiController
     {
         private MyFoodEntities1 db = new MyFoodEntities1();

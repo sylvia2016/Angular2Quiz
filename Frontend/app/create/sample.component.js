@@ -19,8 +19,6 @@ var SampleComponent = (function () {
         this.urlE = 'http://172.16.3.213/kenHW/api/kenAPI';
         this.urlS = 'http://172.16.3.12/Angular2QuizAPI/api/FoodPrices';
         this.apiName = 'Ken\'s API';
-        this.isShow = false;
-        this.btnWord = '新增菜單';
     }
     SampleComponent.prototype.ngOnInit = function () {
         console.log(this.foodId);
@@ -65,7 +63,7 @@ var SampleComponent = (function () {
         var obj = { Id: this.numId, Name: this.inputName, Price: this.inputPrice };
         this.common.postFood(obj)
             .subscribe(function (data) { }, function (err) { alert(err._body); }, function () {
-            alert('新增成功！');
+            alert('add successfully!');
             //this.foodId = -99999999999999999999999999999999999999;
             _this.foodId = _this.numId;
             _this.getAllFood();
@@ -82,7 +80,7 @@ var SampleComponent = (function () {
         var obj = { Id: updateId, Name: updateName, Price: updatePrice };
         this.common.updateFood(updateId, obj)
             .subscribe(function (data) { }, function (err) { alert(err._body); }, function () {
-            alert('修改成功！');
+            alert('update successfully!');
             _this.getAllFood();
             _this.doChange();
         });
@@ -102,22 +100,15 @@ var SampleComponent = (function () {
         if (this.common.apiUrl == this.urlE) {
             this.common.apiUrl = this.urlS;
             this.apiName = 'Sylvia\'s API';
+            console.log(this.apiName);
         }
         else {
             this.common.apiUrl = this.urlE;
             this.apiName = 'Ken\'s API';
+            console.log(this.apiName);
         }
         this.foodId = 1;
         this.ngOnInit();
-    };
-    SampleComponent.prototype.switchAdd = function () {
-        this.isShow = !this.isShow;
-        if (this.isShow == true) {
-            this.btnWord = '關閉新增';
-        }
-        else {
-            this.btnWord = '新增菜單';
-        }
     };
     SampleComponent = __decorate([
         core_1.Component({

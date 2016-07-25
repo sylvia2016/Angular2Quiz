@@ -5,11 +5,12 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class CommonService {
 
-    apiUrl: string = 'http://172.16.3.85/HomeworkAPI/api/Food';
+    apiUrl: string = 'http://172.16.3.213/kenHW/api/kenAPI';
 
     constructor(private http: Http) {}
 
     getFood() {
+        console.log(this.apiUrl);
         return this.http.get(this.apiUrl)
             .map((value: any) => {
                 return value.json();

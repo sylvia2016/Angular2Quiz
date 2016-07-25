@@ -16,10 +16,17 @@ export class SampleComponent implements OnInit {
     foodId: number = 1;
     inputName: string;
     inputPrice: string;
+    urlE: string = 'http://172.16.3.213/kenHW/api/kenAPI';
+    urlS: string = 'http://172.16.3.12/Angular2QuizAPI/api/FoodPrices';
+    apiName: string = 'Ken\'s API';
+    isShow: boolean = false;
+    btnWord: string = '新增菜單';
 
     constructor(private common: CommonService) { }
     
     ngOnInit() {
+        console.log(this.foodId);
+        this.clearInputFoodAndPrice();
         this.getAllFood();
         this.doChange();
     }
@@ -33,7 +40,7 @@ export class SampleComponent implements OnInit {
                 for (let item of this.aryFood) {
                     this.aryId.push(item['Id']);
                 }
-            })        
+            })
     }
     
     doChange() {
@@ -64,7 +71,7 @@ export class SampleComponent implements OnInit {
                 (data: any) => { },
                 (err: any) => { alert(err._body); },
                 () => {
-                    alert('add successfully!');
+                    alert('新增成功！');
                     //this.foodId = -99999999999999999999999999999999999999;
                     this.foodId = this.numId;
                     this.getAllFood();                            
@@ -86,7 +93,7 @@ export class SampleComponent implements OnInit {
                 (data: any) => { },
                 (err: any) => { alert(err._body); },
                 () => {
-                    alert('update successfully!');
+                    alert('修改成功！');
                     this.getAllFood();
                     this.doChange();
                 }
@@ -108,4 +115,26 @@ export class SampleComponent implements OnInit {
         }
     }
 
+    changeAPI() {
+        if (this.common.apiUrl == this.urlE) {
+            this.common.apiUrl = this.urlS;
+            this.apiName = 'Sylvia\'s API';
+        }
+        else {
+            this.common.apiUrl = this.urlE;
+            this.apiName = 'Ken\'s API';
+        }
+        this.foodId = 1;
+        this.ngOnInit();
+    }
+
+    switchAdd() {
+        this.isShow = !this.isShow;
+        if (this.isShow == true) {
+            this.btnWord = '關閉新增';
+        } else {
+            this.btnWord = '新增菜單';
+        }
+        
+    }
 }

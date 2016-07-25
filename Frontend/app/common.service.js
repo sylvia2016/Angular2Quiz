@@ -14,9 +14,10 @@ require('rxjs/add/operator/map');
 var CommonService = (function () {
     function CommonService(http) {
         this.http = http;
-        this.apiUrl = 'http://172.16.3.85/HomeworkAPI/api/Food';
+        this.apiUrl = 'http://172.16.3.213/kenHW/api/kenAPI';
     }
     CommonService.prototype.getFood = function () {
+        console.log(this.apiUrl);
         return this.http.get(this.apiUrl)
             .map(function (value) {
             return value.json();

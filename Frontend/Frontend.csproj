@@ -91,8 +91,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\create\create.component.css" />
+    <Content Include="app\create\create.component.html" />
     <Content Include="app\sample\sample.component.css" />
     <Content Include="app\sample\sample.component.html" />
+    <Content Include="App_Data\1469386385_editor-pencil-pen-edit-write-outline-stroke.png" />
     <Content Include="bootstrap.min.css" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
@@ -129,13 +132,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\common.service.ts" />
     <TypeScriptCompile Include="app\main.ts" />
+    <TypeScriptCompile Include="app\create\index.ts" />
+    <TypeScriptCompile Include="app\create\create.component.ts" />
     <TypeScriptCompile Include="app\sample\index.ts" />
     <TypeScriptCompile Include="app\sample\sample.component.ts" />
     <TypeScriptCompile Include="typings\globals\angular-protractor\index.d.ts" />

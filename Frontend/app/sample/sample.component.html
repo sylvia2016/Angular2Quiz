@@ -1,49 +1,65 @@
+﻿<br />
 <br />
 <br />
-<br />
+
+
+
 <div style="padding-left:10px">
-    <table>
-        <tr>
-            <td><h4>Choose food&nbsp;</h4></td>
-            <td>
-                <select id="Select1" style="width: 200px; height:30px" [(ngModel)]="foodId" (ngModelChange)="doChange()">
-                    <option value="-99999999999999999999999999999999999999">all food</option>
-                    <option *ngFor="let food of aryFood" value="{{food.Id}}">{{food.Name}}</option>
-                    <!--<option *ngFor="let food of aryFood" [value]="food.Id" [text]="food.Name"></option> //�ݩ�ô��-->
-                </select>
-                <!--<input id="Text1" type="text" value="{{foodId}}" />-->
-            </td>
-        </tr>
-        <tr>
-            <td><h4>Add new food&nbsp;</h4></td>
-            <td><input id="Text1" type="text" placeholder="input new food name" [(ngModel)]=inputName /></td>
-            <td><input id="Text2" type="text" placeholder="input new food price" [(ngModel)]=inputPrice /></td>
-            <td><input id="Submit1" type="submit" value="Add" (click)="postData()" /></td>
-        </tr>
-    </table>
+    <div class="row">
+        <div class="col-md-1"><input id="Submit1" type="submit" value="切換API" (click)="changeAPI()" class="btn btn-primary" /></div>
+        <div class="col-md-2"><h4>{{apiName}}</h4></div>
+        <div class="col-md-8"><!--<input id="Text1" type="text" [value]="apiName" />--></div>
+    </div>
     <br />
-    <table style="width:50%" border="1">
-        <tr>
-            <td class="table_header">Id</td>
-            <td class="table_body">Name</td>
-            <td class="table_other">Price</td>
-            <td class="table_other">Update</td>
-            <td class="table_other">Delete</td>
+    <br />
+    <div class="row">
+        <div class="col-md-1"><h4>選擇菜單&nbsp;</h4></div>
+        <div class="col-md-2">
+            <select class="form-control" id="Select1" [(ngModel)]="foodId" (ngModelChange)="doChange()">
+                <option value="-99999999999999999999999999999999999999">全部菜單</option>
+                <option *ngFor="let food of aryFood" value="{{food.Id}}">{{food.Name}}</option>
+                <!--<option *ngFor="let food of aryFood" [value]="food.Id" [text]="food.Name"></option> //屬性繫結-->
+            </select>
+            <!--<input id="Text1" type="text" value="{{foodId}}" />-->
+        </div>        
+        <div class="col-md-9"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1"><input id="Button1" class="btn btn-primary" type="button" value="{{btnWord}}" (click)="switchAdd()" /></div>
+        <div class="col-md-11">
+            <div class="row" *ngIf="isShow">
+                <div class="col-md-2"><input class="form-control" id="Text1" type="text" placeholder="input new food name" [(ngModel)]=inputName /></div>
+                <div class="col-md-2"><input class="form-control" id="Text2" type="text" placeholder="input new food price" [(ngModel)]=inputPrice /></div>
+                <div class="col-md-2"><input class="btn btn-success" id="Submit1" type="submit" value="新增" (click)="postData()" /></div>
+                <div class="col-md-6"></div>
+                </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <table class="table table-hover">
+        <tr style="background-color:#337ab7; color:#F0F0F0">
+            <td>Id</td>
+            <td>菜單</td>
+            <td>價錢</td>
+            <td colspan="2">操作</td>            
         </tr>
-        <tr *ngFor="let food of aryFoodById"><!-- ngFor�MngIf���i�P�ɨϥ�(�ѦҺ��}�Ghttp://stackoverflow.com/questions/37026219/angular2-ngfor-and-ngif-on-same-element-producing-error) -->
+        <tr *ngFor="let food of aryFoodById">
+            <!-- ngFor和ngIf不可同時使用(參考網址：http://stackoverflow.com/questions/37026219/angular2-ngfor-and-ngif-on-same-element-producing-error) -->
             <template [ngIf]="food.Id <= 6">
-                <td class="table_header">{{food.Id}}</td>
-                <td class="table_body">{{food.Name}}</td>
-                <td class="table_other">{{food.Price}}</td>
-                <td class="table_other"></td>
-                <td class="table_other"></td>
+                <td>{{food.Id}}</td>
+                <td>{{food.Name}}</td>
+                <td>{{food.Price}}</td>
+                <td></td>
+                <td></td>
             </template>
             <template [ngIf]="food.Id > 6">
-                <td class="table_header"><input id="Text1" type="hidden" value="{{food.Id}}" #updateId />{{food.Id}}</td>
-                <td class="table_body"><input id="Text1" type="text" value="{{food.Name}}" #updateName /></td>
-                <td class="table_other"><input id="Text2" type="text" value="{{food.Price}}" #updatePrice /></td>
-                <td class="table_other"><input id="Submit2" type="submit" value="Update" (click)="updateFood(updateId.value, updateName.value, updatePrice.value)" /></td>
-                <td class="table_other"><input id="Submit3" type="submit" value="Delete" (click)="deleteFood(updateId.value, updateName.value)"/></td>
+                <td><input id="Text1" type="hidden" value="{{food.Id}}" #updateId />{{food.Id}}</td>
+                <td><input id="Text1" type="text" value="{{food.Name}}" #updateName /></td>
+                <td><input id="Text2" type="text" value="{{food.Price}}" #updatePrice /></td>
+                <td><input id="Submit2" type="submit" value="修改菜單" (click)="updateFood(updateId.value, updateName.value, updatePrice.value)" class="btn btn-primary" /></td>
+                <td><input id="Submit3" type="submit" value="刪除菜單" (click)="deleteFood(updateId.value, updateName.value)" class="btn btn-primary" /></td>
             </template>
         </tr>
     </table>
